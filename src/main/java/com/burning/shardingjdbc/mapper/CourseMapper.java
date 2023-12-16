@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
  * @description: mybatis-plus的mapper
  * @date 2023/12/14 22:39
  */
+@Repository
 public interface CourseMapper extends BaseMapper<Course> {
 
 }

@@ -2,6 +2,7 @@ package com.burning.shardingjdbc.mapper;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.burning.shardingjdbc.po.Course;
+import com.burning.shardingjdbc.po.User;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +22,9 @@ public class CourseMapperTest {
 
     @Autowired
     private CourseMapper courseMapper;
+
+    @Autowired
+    private UserMapper userMapper;
 
     /*
      *
@@ -71,6 +75,29 @@ public class CourseMapperTest {
         wrapper.eq("user_id",131);
         Course course = courseMapper.selectOne(wrapper);
         System.out.println(course);
+    }
+
+
+    /*
+     *
+     * 垂直分库
+     *
+     */
+
+    @Test
+    public void addCourse3() {
+        User user = new User();
+        user.setUserName("XXX");
+        user.setStatus("aaa");
+        userMapper.insert(user);
+    }
+
+    @Test
+    public void findCourse3() {
+        QueryWrapper<User> wrapper = new QueryWrapper<>();
+        wrapper.eq("user_id",131);
+        User user = userMapper.selectOne(wrapper);
+        System.out.println(user);
     }
 
 
