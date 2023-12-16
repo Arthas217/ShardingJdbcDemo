@@ -63,5 +63,15 @@ public class CourseMapperTest {
         courseMapper.insert(course);
     }
 
+    //查询课程的方法(cid，user_id二个都对上才能查到数据)
+    @Test
+    public void findCourse2() {
+        QueryWrapper<Course> wrapper = new QueryWrapper<>();
+        wrapper.eq("cid", 942604620104990721L);
+        wrapper.eq("user_id",131);
+        Course course = courseMapper.selectOne(wrapper);
+        System.out.println(course);
+    }
+
 
 }
